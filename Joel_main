@@ -1,0 +1,45 @@
+mapping = {'at': '@',
+			'and': '&',
+			'one': '1',
+			'won': '1',
+			'to': '2',
+			'too': '2',
+			'two': '2',
+			'for': '4',
+			'four': '4',
+			'bea': 'b',
+			'be': 'b',
+			'bee': 'b',
+			'sea': 'c',
+			'see': 'c',
+			'eye': 'i',
+			'oh': 'o',
+			'owe': 'o',
+			'are': 'r',
+			'you': 'u',
+			'why': 'y'}
+
+
+
+n = int(input())
+
+for i in range(n):
+	s = input()
+	s = s + "    "
+	i = 0
+	while i < len(s)-4:
+		s4 = s[i:i+4]
+		upper = s4[0].isupper()
+		s4 = s4[0].lower() + s4[1:]
+		if s4[0:4] in mapping.keys():
+			s = s[:i] + mapping[s4] + s[i+4:]
+		elif s4[0:3] in mapping.keys():
+			s = s[:i] + mapping[s4[0:3]] + s[i+3:]
+		elif s4[0:2] in mapping.keys():
+			s = s[:i] + mapping[s4[0:2]] + s[i+2:]
+		if upper:
+			s = s[:i] + s[i].upper() +s[i+1:]
+		i += 1
+	s = s[0] + s[1:-4]
+
+	print(s)
